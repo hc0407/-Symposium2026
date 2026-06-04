@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Symposium on Protein Language Models</title>
+    <meta
+      name="description"
+      content="Symposium on Protein Language Models: Recent Advances and Applications, November 18-19, 2026, University of Tsukuba, Ibaraki, Japan."
+    />
+    <style>
+      :root {
+        --ink: #17212f;
+        --muted: #5e6b7b;
+        --line: #d9e2ea;
+        --bg: #f6f8fb;
+        --panel: #ffffff;
+        --blue: #1f6fb8;
+        --teal: #087f8c;
+        --gold: #b46f18;
+        --green: #2f7d4f;
+        --shadow: 0 18px 45px rgba(23, 33, 47, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.6;
+        background: var(--bg);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(217, 226, 234, 0.85);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+        gap: 22px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 220px;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: linear-gradient(135deg, var(--blue), var(--teal));
+        box-shadow: 0 9px 22px rgba(31, 111, 184, 0.24);
+      }
+
+      .brand-mark svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 4px;
+      }
+
+      .nav-links a {
+        border-radius: 6px;
+        padding: 8px 10px;
+        color: #3d4b5d;
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--blue);
+        background: #edf5fb;
+      }
+
+      .hero {
+        min-height: calc(100vh - 68px);
+        display: grid;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background:
+          linear-gradient(90deg, rgba(12, 31, 50, 0.92), rgba(12, 31, 50, 0.62)),
+          radial-gradient(circle at 74% 28%, rgba(30, 136, 168, 0.7), transparent 30%),
+          linear-gradient(135deg, #10263b, #1c594f 58%, #6d4b1f);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 120px;
+        background: linear-gradient(0deg, var(--bg), transparent);
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 72px 0 120px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        align-items: center;
+        gap: 48px;
+      }
+
+      .eyebrow {
+        color: #b9e8ef;
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 18px 0 22px;
+        max-width: 860px;
+        font-size: clamp(44px, 6vw, 82px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 0;
+        color: #d8e8ef;
+        font-size: clamp(18px, 2vw, 23px);
+      }
+
+      .hero-actions {
+        margin-top: 36px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        border-radius: 7px;
+        padding: 12px 18px;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        color: #0d2530;
+        background: #ffffff;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
+      }
+
+      .button.secondary {
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-meta {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        max-width: 840px;
+      }
+
+      .meta-item {
+        min-height: 92px;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .meta-label {
+        display: block;
+        color: #a9ccd6;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .meta-value {
+        display: block;
+        margin-top: 6px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 750;
+      }
+
+      .protein-visual {
+        position: relative;
+        min-height: 460px;
+      }
+
+      #proteinCanvas {
+        width: 100%;
+        height: 460px;
+        display: block;
+      }
+
+      .visual-caption {
+        position: absolute;
+        right: 18px;
+        bottom: 20px;
+        max-width: 270px;
+        color: #dceff2;
+        font-size: 13px;
+        text-align: right;
+      }
+
+      main {
+        position: relative;
+        z-index: 2;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+
+      .section-inner {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .section-kicker {
+        margin: 0 0 8px;
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 850;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0 0 20px;
+        font-size: clamp(30px, 3vw, 44px);
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 0 0 10px;
+        font-size: 21px;
+        line-height: 1.25;
+      }
+
+      p {
+        margin: 0 0 16px;
+      }
+
+      .wide-text {
+        max-width: 940px;
+        color: #3c4a58;
+        font-size: 18px;
+      }
+
+      .band-white {
+        background: #fff;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        min-height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 24px;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(23, 33, 47, 0.06);
+      }
+
+      .card p,
+      .card li {
+        color: #4f5e6e;
+      }
+
+      .topic-list,
+      .clean-list {
+        margin: 0;
+        padding-left: 20px;
+      }
+
+      .topic-list li,
+      .clean-list li {
+        margin: 8px 0;
+      }
+
+      .notice {
+        border-left: 5px solid var(--gold);
+        padding: 22px 24px;
+        background: #fff7ec;
+      }
+
+      .notice strong {
+        color: #5d3710;
+      }
+
+      .program {
+        display: grid;
+        gap: 16px;
+      }
+
+      .day {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 22px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
+      }
+
+      .day-date {
+        color: var(--blue);
+        font-size: 18px;
+        font-weight: 850;
+      }
+
+      .session {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 18px;
+        padding: 16px 0;
+      }
+
+      .session + .session {
+        border-top: 1px solid #e8eef3;
+      }
+
+      .time {
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .session-title {
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .session-detail {
+        margin-top: 4px;
+        color: #4f5e6e;
+      }
+
+      .people {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .person {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        background: #fff;
+      }
+
+      .person strong {
+        display: block;
+        font-size: 17px;
+      }
+
+      .person span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .submit-box {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 310px;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .deadline-list {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .deadline-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 16px 18px;
+      }
+
+      .deadline-row + .deadline-row {
+        border-top: 1px solid var(--line);
+      }
+
+      .deadline-row span:first-child {
+        font-weight: 800;
+      }
+
+      .deadline-row span:last-child {
+        color: var(--blue);
+        font-weight: 850;
+        text-align: right;
+      }
+
+      .footer {
+        padding: 42px 0;
+        color: #d7e3ea;
+        background: #132435;
+      }
+
+      .footer a {
+        color: #fff;
+      }
+
+      .footer-grid {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .footer p {
+        margin: 4px 0;
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 0;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-inner,
+        .submit-box {
+          grid-template-columns: 1fr;
+        }
+
+        .protein-visual {
+          min-height: 320px;
+        }
+
+        #proteinCanvas {
+          height: 320px;
+        }
+
+        .hero-meta,
+        .grid.three,
+        .grid.two,
+        .people {
+          grid-template-columns: 1fr;
+        }
+
+        .day,
+        .session,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav,
+        .hero-inner,
+        .section-inner,
+        .footer-grid {
+          width: min(100% - 28px, 1180px);
+        }
+
+        h1 {
+          font-size: 40px;
+        }
+
+        section {
+          padding: 54px 0;
+        }
+
+        .hero-meta {
+          gap: 10px;
+        }
+
+        .deadline-row {
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .deadline-row span:last-child {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Symposium home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 6c4 0 4 12 8 12" />
+              <path d="M18 6c-4 0-4 12-8 12" />
+              <path d="M7 9h10M7 15h10" />
+            </svg>
+          </span>
+          <span>PLM Symposium 2026</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#call">Call for Abstracts</a>
+          <a href="#program">Program</a>
+          <a href="#committees">Committees</a>
+          <a href="#submission">Submission</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="top" aria-label="Conference introduction">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Sino-Japanese Bilateral Joint Seminar</p>
+          <h1>Symposium on Protein Language Models</h1>
+          <p class="lead">
+            Recent Advances and Applications in multimodal protein foundation models,
+            evaluation benchmarks, and biomedical translation.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#call">View Call for Abstracts</a>
+            <a class="button secondary" href="mailto:zhusf@fudan.edu.cn?subject=PLM%20Symposium%202026%20Abstract%20Submission">Submit by Email</a>
+          </div>
+          <div class="hero-meta" aria-label="Conference facts">
+            <div class="meta-item">
+              <span class="meta-label">Date</span>
+              <span class="meta-value">November 18-19, 2026</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Venue</span>
+              <span class="meta-value">University of Tsukuba, Ibaraki, Japan</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Format</span>
+              <span class="meta-value">Focused in-person symposium</span>
+            </div>
+          </div>
+        </div>
+        <div class="protein-visual" aria-label="Animated protein representation">
+          <canvas id="proteinCanvas" width="720" height="560"></canvas>
+          <p class="visual-caption">
+            Sequence, structure, text, and network evidence brought into a shared modeling space.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="about">
+        <div class="section-inner">
+          <p class="section-kicker">Theme</p>
+          <h2>Protein language models for the next stage of protein science</h2>
+          <p class="wide-text">
+            Protein language models are changing how researchers represent protein sequences,
+            structures, functions, and interactions. This symposium brings together researchers
+            from China and Japan to discuss multimodal PLMs, robust evaluation frameworks, and
+            applications in function annotation, protein interaction prediction, variant effect
+            interpretation, clinical phenotype analysis, and drug discovery.
+          </p>
+          <div class="grid three" style="margin-top: 28px">
+            <article class="card">
+              <h3>Model Methods</h3>
+              <p>
+                Advances in foundation model architectures, sequence-structure-text fusion,
+                task adaptation, interpretability, and generative modeling.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Evaluation</h3>
+              <p>
+                Standardized, dynamically updated benchmarks that reduce information leakage
+                and support fair comparison across models, tasks, and species.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Applications</h3>
+              <p>
+                Translational use cases in protein function annotation, PPI prediction,
+                protein design, clinical phenotype prediction, and drug-target discovery.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band-white" id="call">
+        <div class="section-inner">
+          <p class="section-kicker">Call for Abstracts</p>
+          <h2>Share recent work, tools, datasets, and early-stage ideas</h2>
+          <div class="submit-box">
+            <div>
+              <p class="wide-text">
+                We invite abstract submissions from researchers and students working on protein
+                language models and related computational biology methods. Submissions may
+                describe completed studies, ongoing projects, benchmark resources, application
+                case studies, or methodological perspectives.
+              </p>
+              <div class="grid two" style="margin-top: 24px">
+                <article class="card">
+                  <h3>Topics of Interest</h3>
+                  <ul class="topic-list">
+                    <li>Unimodal and multimodal protein language models</li>
+                    <li>Sequence, structure, text, and graph/network representation learning</li>
+                    <li>Protein function annotation and remote homology search</li>
+                    <li>Protein-protein interaction and affinity prediction</li>
+                    <li>Variant effect prediction and clinical phenotype annotation</li>
+                    <li>Protein design, drug discovery, and molecular generation</li>
+                    <li>Benchmark construction, blind tests, and data leakage control</li>
+                    <li>Explainable AI and biological validation for PLMs</li>
+                  </ul>
+                </article>
+                <article class="card">
+                  <h3>Abstract Format</h3>
+                  <ul class="clean-list">
+                    <li>Language: English</li>
+                    <li>Length: up to 300 words</li>
+                    <li>Include title, authors, affiliations, and corresponding email</li>
+                    <li>Submit as PDF or Word document by email</li>
+                    <li>Indicate preference for oral presentation or poster discussion</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+            <aside class="deadline-list" aria-label="Important dates">
+              <div class="deadline-row">
+                <span>Abstract deadline</span>
+                <span>September 15, 2026</span>
+              </div>
+              <div class="deadline-row">
+                <span>Notification</span>
+                <span>October 1, 2026</span>
+              </div>
+              <div class="deadline-row">
+                <span>Final program</span>
+                <span>October 20, 2026</span>
+              </div>
+              <div class="deadline-row">
+                <span>Symposium</span>
+                <span>November 18-19, 2026</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="program">
+        <div class="section-inner">
+          <p class="section-kicker">Program</p>
+          <h2>Tentative symposium schedule</h2>
+          <div class="program">
+            <div class="day">
+              <div class="day-date">November 18, 2026</div>
+              <div>
+                <div class="session">
+                  <div class="time">Morning</div>
+                  <div>
+                    <div class="session-title">Opening Ceremony and Keynote Talks</div>
+                    <div class="session-detail">
+                      Greetings by Chinese and Japanese PIs; invited talk on the latest advances
+                      in protein language models; keynote talks by Prof. Xiucai Ye and Prof.
+                      Shanfeng Zhu.
+                    </div>
+                  </div>
+                </div>
+                <div class="session">
+                  <div class="time">Afternoon</div>
+                  <div>
+                    <div class="session-title">Session 1: Model Progress and Algorithmic Innovation</div>
+                    <div class="session-detail">
+                      Multimodal PLMs, interpretability, foundation models for compound design,
+                      and young scholars' exchange on emerging algorithms.
+                    </div>
+                  </div>
+                </div>
+                <div class="session">
+                  <div class="time">Late Afternoon</div>
+                  <div>
+                    <div class="session-title">Session 2: Performance Evaluation and Standardization</div>
+                    <div class="session-detail">
+                      Cross-task and cross-species evaluation systems, blind tests, dynamic
+                      updates, information leakage, and fair benchmark construction.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="day">
+              <div class="day-date">November 19, 2026</div>
+              <div>
+                <div class="session">
+                  <div class="time">Morning</div>
+                  <div>
+                    <div class="session-title">Session 3: Applications of PLMs</div>
+                    <div class="session-detail">
+                      Affinity and antioxidant protein prediction, drug discovery and network
+                      reasoning, clinical phenotype prediction, and explainable AI for biological
+                      discovery.
+                    </div>
+                  </div>
+                </div>
+                <div class="session">
+                  <div class="time">Afternoon</div>
+                  <div>
+                    <div class="session-title">Joint Summary and Exchange of Outcomes</div>
+                    <div class="session-detail">
+                      Free discussion, project planning, future directions for Sino-Japanese
+                      collaboration, and laboratory tour.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band-white" id="committees">
+        <div class="section-inner">
+          <p class="section-kicker">Committees</p>
+          <h2>Program and organizing committees</h2>
+          <div class="grid two">
+            <article>
+              <h3>Program Committee</h3>
+              <div class="people" style="margin-top: 16px">
+                <div class="person"><strong>Shanfeng Zhu</strong><span>Fudan University, China</span></div>
+                <div class="person"><strong>Xiucai Ye</strong><span>University of Tsukuba, Japan</span></div>
+                <div class="person"><strong>Tetsuya Sakurai</strong><span>University of Tsukuba, Japan</span></div>
+                <div class="person"><strong>Hiroshi Mamitsuka</strong><span>Kyoto University, Japan</span></div>
+                <div class="person"><strong>Yang Yang</strong><span>Shanghai Jiao Tong University, China</span></div>
+                <div class="person"><strong>Liang Yu</strong><span>Xidian University, China</span></div>
+              </div>
+            </article>
+            <article>
+              <h3>Organizing Committee</h3>
+              <div class="people" style="margin-top: 16px">
+                <div class="person"><strong>Shanfeng Zhu</strong><span>Chinese Coordinator, Fudan University</span></div>
+                <div class="person"><strong>Xiucai Ye</strong><span>Japanese Coordinator, University of Tsukuba</span></div>
+                <div class="person"><strong>Local organizing team</strong><span>University of Tsukuba</span></div>
+                <div class="person"><strong>Student volunteer team</strong><span>China-Japan joint seminar participants</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="submission">
+        <div class="section-inner">
+          <p class="section-kicker">Submission</p>
+          <h2>Email submission</h2>
+          <div class="notice">
+            <p>
+              <strong>Submit abstracts by email:</strong>
+              <a href="mailto:zhusf@fudan.edu.cn?subject=PLM%20Symposium%202026%20Abstract%20Submission">zhusf@fudan.edu.cn</a>
+            </p>
+            <p>
+              Suggested subject line: <strong>PLM Symposium 2026 Abstract Submission</strong>.
+              Please attach your abstract file and include the corresponding author's name,
+              affiliation, and preferred presentation format in the email body.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band-white" id="contact">
+        <div class="section-inner">
+          <p class="section-kicker">Venue and Contact</p>
+          <h2>University of Tsukuba, Ibaraki, Japan</h2>
+          <div class="grid two">
+            <article class="card">
+              <h3>Venue</h3>
+              <p>
+                The symposium will be hosted at the University of Tsukuba in Ibaraki, Japan.
+                Detailed room information, travel notes, and accommodation suggestions will be
+                announced with the final program.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Contact</h3>
+              <p>
+                Prof. Shanfeng Zhu<br />
+                Institute of Brain-inspired Intelligence Science and Technology, Fudan University<br />
+                Email: <a href="mailto:zhusf@fudan.edu.cn">zhusf@fudan.edu.cn</a>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <p><strong>Symposium on Protein Language Models: Recent Advances and Applications</strong></p>
+          <p>Sino-Japanese Bilateral Joint Seminar | November 18-19, 2026</p>
+        </div>
+        <a class="button secondary" href="#top">Back to Top</a>
+      </div>
+    </footer>
+
+    <script>
+      const canvas = document.getElementById("proteinCanvas");
+      const ctx = canvas.getContext("2d");
+      const nodes = Array.from({ length: 28 }, (_, i) => ({
+        x: 0.15 + Math.random() * 0.7,
+        y: 0.12 + Math.random() * 0.75,
+        r: 3 + Math.random() * 4,
+        phase: Math.random() * Math.PI * 2,
+        group: i % 4,
+      }));
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const scale = window.devicePixelRatio || 1;
+        canvas.width = rect.width * scale;
+        canvas.height = rect.height * scale;
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+      }
+
+      function draw(t) {
+        const { width, height } = canvas.getBoundingClientRect();
+        ctx.clearRect(0, 0, width, height);
+        const palette = ["#7dd3fc", "#99f6e4", "#fde68a", "#bbf7d0"];
+        const points = nodes.map((node, i) => {
+          const drift = Math.sin(t / 900 + node.phase) * 18;
+          const pulse = Math.cos(t / 1100 + node.phase) * 14;
+          return {
+            x: node.x * width + drift,
+            y: node.y * height + pulse,
+            r: node.r + Math.sin(t / 700 + i) * 0.8,
+            color: palette[node.group],
+          };
+        });
+
+        ctx.lineWidth = 1;
+        for (let i = 0; i < points.length; i += 1) {
+          for (let j = i + 1; j < points.length; j += 1) {
+            const dx = points[i].x - points[j].x;
+            const dy = points[i].y - points[j].y;
+            const d = Math.hypot(dx, dy);
+            if (d < 145) {
+              ctx.strokeStyle = `rgba(210, 242, 246, ${0.34 - d / 520})`;
+              ctx.beginPath();
+              ctx.moveTo(points[i].x, points[i].y);
+              ctx.lineTo(points[j].x, points[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        points.forEach((point) => {
+          const gradient = ctx.createRadialGradient(point.x, point.y, 1, point.x, point.y, point.r * 5);
+          gradient.addColorStop(0, point.color);
+          gradient.addColorStop(1, "rgba(255,255,255,0)");
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(point.x, point.y, point.r * 5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = point.color;
+          ctx.beginPath();
+          ctx.arc(point.x, point.y, point.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        requestAnimationFrame(draw);
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      requestAnimationFrame(draw);
+    </script>
+  </body>
+</html>

@@ -555,7 +555,20 @@
           text-align: left;
         }
       }
-    </style>
+    
+      #program { scroll-margin-top: 100px; }
+      .agenda-day { margin-top: 36px; }
+      .agenda { width: 100%; border-collapse: collapse; table-layout: fixed; background: #fff; }
+      .agenda caption { text-align: left; padding: 8px 0 14px; color: #526170; }
+      .agenda th, .agenda td { padding: 15px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid #d9e2ea; overflow-wrap: anywhere; }
+      .agenda thead th:first-child { width: 160px; }
+      .agenda thead { background: #edf2f6; }
+      .agenda-group th { background: #e2efeb; color: #17534a; font-weight: 750; }
+      .agenda-person { margin-top: 6px; font-size: 14px; font-weight: 650; }
+      .agenda-person span { color: #526170; font-weight: 400; }
+      .agenda-break { background: #f7f8fa; color: #526170; }
+      @media (max-width: 560px) { .agenda thead th:first-child { width: 105px; } .agenda th, .agenda td { padding: 12px 8px; font-size: 14px; } .agenda-person span { display: block; } }
+</style>
   </head>
   <body>
     <header class="site-header">
@@ -717,54 +730,67 @@
         </div>
       </section>
 
-      <section id="program">
-        <div class="section-inner">
-          <p class="section-kicker">Program</p>
-          <h2>Tentative symposium schedule</h2>
-          <div class="program">
-            <div class="day">
-              <div class="day-date">November 18, 2026</div>
-              <div>
-                <div class="session">
-                  <div class="time">Morning</div>
-                  <div>
-                    <div class="session-title">Opening Ceremony and Keynote Talks</div>
-                  </div>
-                </div>
-                <div class="session">
-                  <div class="time">Afternoon</div>
-                  <div>
-                    <div class="session-title">Session 1</div>
-                  </div>
-                </div>
-                <div class="session">
-                  <div class="time">Late Afternoon</div>
-                  <div>
-                    <div class="session-title">Session 2</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="day">
-              <div class="day-date">November 19, 2026</div>
-              <div>
-                <div class="session">
-                  <div class="time">Morning</div>
-                  <div>
-                    <div class="session-title">Session 3</div>
-                  </div>
-                </div>
-                <div class="session">
-                  <div class="time">Afternoon</div>
-                  <div>
-                    <div class="session-title">Joint Summary and Exchange of Outcomes</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section id="program"><div class="section-inner"><p class="section-kicker">Program</p><h2>Symposium program</h2><p>November 18–19, 2026 · All times are Japan Standard Time (JST, UTC+9).</p>
+<div class="agenda-day"><h3>Wednesday, November 18</h3><table class="agenda"><caption>Wednesday, November 18 — University of Tsukuba</caption><thead><tr><th scope="col">Time (JST)</th><th scope="col">Programme</th></tr></thead><tbody>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Opening and Keynotes: Protein Language Models and Biomedical AI</th></tr>
+<tr class="agenda-talk"><th scope="row">09:00–09:15</th><td><div>Opening remarks</div><div class="agenda-person">Tetsuya Sakurai <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">09:15–09:45</th><td><div>Interpretable Machine Learning for  Biomedical Knowledge Discover</div><div class="agenda-person">Xiucai Ye <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">09:45–10:15</th><td><div>Recent Advances in Large-scale Protein Function Prediction</div><div class="agenda-person">Shanfeng Zhu <span>· Fudan University</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">10:15–10:45</th><td><div>Coffee break</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Model Innovation: Molecular Generation and AI Agents</th></tr>
+<tr class="agenda-talk"><th scope="row">10:45-11:15</th><td><div>Directed Molecular Generation Under Multiple Constraints</div><div class="agenda-person">Yang Yang <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">11:15–11:30</th><td><div>Towards AI Agents for Fast and Reliable Transition State Search</div><div class="agenda-person">You Wu <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">11:30–13:20</th><td><div>Lunch</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Generative Modeling for Biomolecular Design</th></tr>
+<tr class="agenda-talk"><th scope="row">13:20–13:35</th><td><div>Local Structure-Aware De novo Design of Protein-targeted RNA Binder</div><div class="agenda-person">Zhenran Xiao <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">13:35–13:50</th><td><div>EvoCodon Enables Host-Controllable and Rhythm-Aware Coding Sequence Design with Proportional Increases in Protein Expression and Activity</div><div class="agenda-person">Yao Xuan <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">13:50–14:05</th><td><div>Target-Conditioned Epitope Design via Preference-Aligned Discrete Flow Matching</div><div class="agenda-person">Letian Chen <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">14:05–14:20</th><td><div>Generative Antigen Peptide Design for Precision Immunotherapy: Current Models and Virtual Cell-Based Paradigms</div><div class="agenda-person">Haoyang Luan <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Protein Language Models: Architectures and Variant Effects</th></tr>
+<tr class="agenda-talk"><th scope="row">14:20–14:35</th><td><div>A Compact Mamba Protein Language Model for Variant-Effect
+Prediction</div><div class="agenda-person">Tongjin Zou <span>· Fudan University</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">14:35–15:05</th><td><div>Coffee break</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Enabling Methods for Biological Foundation Models: Transfer and Generalization</th></tr>
+<tr class="agenda-talk"><th scope="row">15:05–15:20</th><td><div>Prototype-Guided Knowledge Transfer for Imbalanced and Heterogeneous Data Collaboration</div><div class="agenda-person">Tingkai Sun <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">15:20–15:35</th><td><div>Boundary-Aware Graph Refinement for Spatial Domain Identification</div><div class="agenda-person">Wenbo Zhang <span>· Shanghai Jiao Tong University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">15:35–15:50</th><td><div>Robust Cross-Section Tissue Domain Label Transfer in Spatial Transcriptomics via Contrastive Learning and Optimal Transport</div><div class="agenda-person">Mengke Guo <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">15:50–16:20</th><td><div>Coffee break</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Invited Talk: Protein Structure Prediction and Downstream Applications</th></tr>
+<tr class="agenda-talk"><th scope="row">16:20–16:50</th><td><div>Online invited talk: Can we use AlphaFold more for bioinformatics?</div><div class="agenda-person">Hiroshi Mamitsuka <span>· Kyoto University</span></div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Discussion: Evaluation and Standardization of Protein Language Models</th></tr>
+<tr class="agenda-break"><th scope="row">16:50–17:50</th><td><div>Discussion Section</div></td></tr>
+<tr class="agenda-break"><th scope="row">18:00–19:30</th><td><div>Dinner</div></td></tr>
+</tbody></table></div>
+<div class="agenda-day"><h3>Thursday, November 19</h3><table class="agenda"><caption>Thursday, November 19 — University of Tsukuba</caption><thead><tr><th scope="col">Time (JST)</th><th scope="col">Programme</th></tr></thead><tbody>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Protein Language Models and Integrative Learning for Function Prediction</th></tr>
+<tr class="agenda-talk"><th scope="row">09:00–09:15</th><td><div>GOReasoner: Enabling Evidence-Grounded Verification for Protein Function Annotation with LLM</div><div class="agenda-person">Huiying Yan <span>· Fudan University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">09:15–09:30</th><td><div>SpecGOFiller: Species-Aware Multi-Network Learning Improves Function Prediction in Partially Annotated Proteins</div><div class="agenda-person">Hancheng Liu <span>· Fudan University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">09:30–09:45</th><td><div>Learning Viral Taxonomy with Protein Language Models and RSCU Features</div><div class="agenda-person">Shitao Gong <span>· Fudan University</span></div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Language Models and Multimodal Learning for Drug Discovery</th></tr>
+<tr class="agenda-talk"><th scope="row">09:45–10:00</th><td><div>Large Language Models Meet Biomedical Knowledge for Mechanistically Grounded Drug Gene Prioritization</div><div class="agenda-person">Hongyang Yang <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">10:00–10:15</th><td><div>Structure-Aware Multi-Granularity Fusion for Cold-Start DTI Prediction</div><div class="agenda-person">Hui Han <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">10:15–10:45</th><td><div>Coffee break</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Biomedical Knowledge and Clinical Tasks for Foundation Model Research</th></tr>
+<tr class="agenda-talk"><th scope="row">10:45-11:00</th><td><div>DARG: An integrated knowledge base for analyzing addictive drug related genes</div><div class="agenda-person">Xu Wang <span>· Xidian University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">11:00–11:15</th><td><div>Subtype Identification of Alzheimer&#x27;s Disease Spectrum Using Clustering Analysis</div><div class="agenda-person">Weike Liu <span>· University of Tsukuba</span></div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Single-Cell Modeling and Benchmarks: Perspectives for Biological Foundation Models</th></tr>
+<tr class="agenda-talk"><th scope="row">11:15–11:30</th><td><div>Cafe: A Unified Framework for Single-Cell Fate Inference, Visualization and Benchmarking</div><div class="agenda-person">Zhaoyang Huang <span>· Xidian University</span></div></td></tr>
+<tr class="agenda-talk"><th scope="row">11:30–11:45</th><td><div>Decoupling RNA velocity inference from splicing kinetics via integration of gene regulatory networks and global temporal dynamics</div><div class="agenda-person">Yuchuan Peng <span>· Xidian University</span></div></td></tr>
+<tr class="agenda-break"><th scope="row">11:45–13:30</th><td><div>Lunch</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Protein Language Models: Multimodal Integration, Evaluation and Collaboration</th></tr>
+<tr class="agenda-break"><th scope="row">13:30–14:00</th><td><div>Discussion Session 1: What Are the Next Frontiers of Protein Language Models?</div></td></tr>
+<tr class="agenda-break"><th scope="row">14:00–14:30</th><td><div>Discussion Session 2: How Can We Effectively Integrate Multimodal Biological Data?</div></td></tr>
+<tr class="agenda-break"><th scope="row">14:30–15:00</th><td><div>Discussion Session 3: How Can Foundation Models Advance Protein Understanding and Design?</div></td></tr>
+<tr class="agenda-break"><th scope="row">15:00–15:15</th><td><div>Coffee break</div></td></tr>
+<tr class="agenda-break"><th scope="row">15:15–15:45</th><td><div>Discussion Session 4: How Should We Evaluate and Interpret Biological Foundation Models?</div></td></tr>
+<tr class="agenda-break"><th scope="row">15:45–16:15</th><td><div>Discussion Session 5: How Can We Translate Foundation Models into Biomedical Discoveries?</div></td></tr>
+<tr class="agenda-break"><th scope="row">16:15–16:45</th><td><div>Discussion Session 6: Future Perspectives and Research Collaboration</div></td></tr>
+<tr class="agenda-group"><th colspan="2" scope="colgroup">Closing Summary and Laboratory Exchange</th></tr>
+<tr class="agenda-break"><th scope="row">16:45–17:00</th><td><div>Closing Remarks</div></td></tr>
+<tr class="agenda-break"><th scope="row">17:00–18:00</th><td><div>Laboratory Tour</div></td></tr>
+<tr class="agenda-break"><th scope="row">18:00–19:30</th><td><div>Dinner</div></td></tr>
+</tbody></table></div>
+</div></section>
 
       <section class="band-white" id="committees">
         <div class="section-inner">
